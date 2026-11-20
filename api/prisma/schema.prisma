@@ -7,11 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Role {
-  PATRON
-  LIBRARIAN
-}
-
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -37,4 +32,9 @@ model Book {
   availableCopies Int    @default(1)
   genreId         Int
   genre           Genre  @relation(fields: [genreId], references: [id])
+}
+
+enum Role {
+  PATRON
+  LIBRARIAN
 }
